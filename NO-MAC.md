@@ -1,5 +1,14 @@
 # 没有 Mac 时如何构建/安装 iOS 版
 
+> **已验证：** 2026-10-19，GitHub Actions 的 macOS runner 成功编译了本工程，产物 bundle id `com.cubeprobe.mc.ios`，arm64，最低 iOS 16.0。
+>
+> 直接下载未签名 IPA：
+> https://github.com/sunaiyun/cubeprobe-ios/releases/download/ios-v1.0.0/CubeProbe-unsigned.ipa
+>
+> 仓库（含 Actions 记录）：https://github.com/sunaiyun/cubeprobe-ios
+>
+> 未签名 IPA 不能直接安装，仍需按下面的 Sideloadly 步骤用 Apple ID 重签。
+
 iOS 应用必须在 macOS + Xcode 中编译，且装到真机前必须签名。没有 Mac 时，推荐走“云端 macOS 构建 + Windows 侧签名安装”的组合，不需要本地 Mac。
 
 ## 方案 A：GitHub Actions（免费，推荐）
@@ -59,4 +68,4 @@ iOS 应用必须在 macOS + Xcode 中编译，且装到真机前必须签名。�
 - **Sideloadly 安装失败**：确认 IPA 内含 `Payload/CubeProbe.app`，iPhone 已信任电脑、已打开开发者模式，Apple ID 没有开启双重认证兼容问题。
 - **7 天后闪退**：免费签名过期，用 Sideloadly 重新安装即可。
 
-> 本工程尚未在真实 Xcode 中编译过；GitHub Actions 是第一次实际编译的途径。若 workflow 报错，属于需要根据日志修正代码的问题，不是没有 Mac 就无法解决。
+> 本工程已通过 GitHub Actions 实际编译成功；上面的 workflow 产物已在 Release 中。若你修改代码，重新运行 workflow 即可生成新的 IPA。真机安装仍未实测，若 Sideloadly 报错请带上截图/错误信息。
