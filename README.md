@@ -2,7 +2,19 @@
 
 与 Windows / Linux / macOS / Android 版同一套设计语言的 iOS 客户端。SwiftUI + Network.framework，直接连接 Minecraft Java 版与基岩版服务器。
 
-> **没有 Mac？** 不需要本地 Mac 也能构建：工程自带 GitHub Actions 工作流，使用云端 macOS runner 生成未签名 IPA，再在 Windows 用 Sideloadly + Apple ID 安装。详见 [NO-MAC.md](NO-MAC.md)。
+> **没有 Mac？** 不需要本地 Mac：本工程已通过 GitHub Actions 的云端 macOS runner 实际编译成功。
+>
+> 直接下载未签名 IPA：[CubeProbe-unsigned.ipa](https://github.com/sunaiyun/cubeprobe-ios/releases/download/ios-v1.0.0/CubeProbe-unsigned.ipa)
+>
+> 在 Windows 用 Sideloadly + Apple ID 签名安装；免费 Apple ID 7 天有效。详见 [NO-MAC.md](NO-MAC.md)。
+
+## 直接下载
+
+- 仓库：https://github.com/sunaiyun/cubeprobe-ios
+- Release：https://github.com/sunaiyun/cubeprobe-ios/releases/tag/ios-v1.0.0
+- 构建记录：https://github.com/sunaiyun/cubeprobe-ios/actions/runs/39252043026
+
+IPA 未签名、不含 `embedded.mobileprovision`，不能直接安装；必须用 Sideloadly / AltStore 重签。
 
 ## 系统要求
 
@@ -56,7 +68,7 @@ CubeProbe/Resources/      Assets.xcassets 与 1024 应用图标
 
 ## 重要说明
 
-- **本工程是在 Windows 上编写的，未能在本机运行 Xcode 编译或签名。** 交付物是完整源码工程，不是 IPA。请用 Xcode 构建；如有编译错误，通常来自本机 Xcode 版本差异，反馈具体报错即可修复。
+- **已通过 GitHub Actions 的 macOS runner 编译成功，并生成未签名 IPA。** 真机安装需要用 Sideloadly / AltStore 重新签名；签名后未在真机实际测试。
 - iOS 的原始 TCP / UDP 连接不需要额外权限；访问局域网服务器时 iOS 可能会弹出“本地网络”权限提示，文案已配置。
 - 连接公网服务器时不需要本地网络权限。查询直接由 App 发起，不经过第三方 API。
 - 基岩版状态包不返回玩家列表，所以基岩版不显示玩家样本。
